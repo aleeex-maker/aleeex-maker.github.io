@@ -1,67 +1,182 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ro">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>TikTok Clone</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Paradisul Porumbeilor - Magazin</title>
   <style>
-    .video-wrapper {
-      aspect-ratio: 9 / 16;
-      height: 100vh;
+    /* Reset și font */
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f5f7fa;
+      color: #333;
+      padding: 40px 20px;
+      margin: 0;
+    }
+
+    h1 {
+      text-align: center;
+      font-weight: 700;
+      font-size: 2.5rem;
+      margin-bottom: 40px;
+      color: #3a3a3a;
+    }
+
+    #products {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .product {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: default;
+    }
+    .product:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+
+    .product img {
+      width: 140px;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .product-info {
+      text-align: center;
+      flex-grow: 1;
+    }
+
+    .product-info h3 {
+      margin: 0 0 10px 0;
+      font-size: 1.3rem;
+      color: #222;
+    }
+
+    .product-info p {
+      margin: 0 0 20px 0;
+      font-size: 1.1rem;
+      color: #666;
+    }
+
+    button {
+      background: #5c7cfa;
+      border: none;
+      padding: 12px 25px;
+      font-size: 1rem;
+      color: white;
+      font-weight: 600;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      box-shadow: 0 4px 12px rgba(92,124,250,0.5);
+      user-select: none;
+    }
+    button:hover {
+      background-color: #4869d9;
+      box-shadow: 0 6px 18px rgba(72,105,217,0.6);
+    }
+    button:active {
+      transform: scale(0.96);
+    }
+
+    #cart-icon {
+      position: fixed;
+      top: 25px;
+      right: 25px;
+      font-size: 30px;
+      cursor: pointer;
+      background: #5c7cfa;
+      color: white;
+      padding: 12px 15px;
+      border-radius: 50%;
+      box-shadow: 0 5px 15px rgba(92,124,250,0.6);
+      transition: background-color 0.3s ease;
+      user-select: none;
+      z-index: 1000;
+    }
+    #cart-icon:hover {
+      background-color: #4869d9;
+      box-shadow: 0 8px 20px rgba(72,105,217,0.7);
     }
   </style>
 </head>
-<body class="bg-black text-white overflow-y-scroll snap-y snap-mandatory h-screen">
+<body>
 
-  <!-- Feedul video -->
-  <div id="feed" class="flex flex-col snap-y snap-mandatory">
+<h1>Paradisul Porumbeilor - Magazin</h1>
 
-    <!-- Post 1 -->
-    <div class="snap-start video-wrapper relative">
-      <video class="w-full h-full object-cover" src="https://www.w3schools.com/html/mov_bbb.mp4" autoplay loop muted playsinline></video>
-      <div class="absolute bottom-10 left-5">
-        <h2 class="text-xl font-bold">alex.tiktok</h2>
-        <p>#funny #cat</p>
-      </div>
-      <div class="absolute bottom-10 right-5 flex flex-col items-center space-y-3">
-        <button class="like-btn text-3xl">❤️</button>
-        <span class="like-count text-lg">0</span>
-        <button class="comment-btn text-white text-xl">💬</button>
-      </div>
-    </div>
-
-    <!-- Post 2 -->
-    <div class="snap-start video-wrapper relative">
-      <video class="w-full h-full object-cover" src="https://www.w3schools.com/html/movie.mp4" autoplay loop muted playsinline></video>
-      <div class="absolute bottom-10 left-5">
-        <h2 class="text-xl font-bold">mariaxd</h2>
-        <p>#vibes</p>
-      </div>
-      <div class="absolute bottom-10 right-5 flex flex-col items-center space-y-3">
-        <button class="like-btn text-3xl">❤️</button>
-        <span class="like-count text-lg">0</span>
-        <button class="comment-btn text-white text-xl">💬</button>
-      </div>
+<div id="products">
+  <div class="product" data-id="1" data-name="Pălărie porumbel" data-price="15">
+    <img src="images/hat.jpg" alt="Pălărie" />
+    <div class="product-info">
+      <h3>Pălărie porumbel</h3>
+      <p>Preț: 15 RON</p>
+      <button onclick="addToCart(1)">Adaugă în coș</button>
     </div>
   </div>
 
-  <!-- Comentarii -->
-  <div id="comment-panel" class="hidden fixed bottom-0 left-0 w-full bg-white text-black p-4 max-h-[50vh] overflow-y-auto rounded-t-2xl shadow-xl z-50">
-    <div class="flex justify-between items-center">
-      <h3 class="text-xl font-bold">Comentarii</h3>
-      <button id="close-comments" class="text-lg font-bold text-red-500">X</button>
+  <div class="product" data-id="2" data-name="Adidași porumbel" data-price="45">
+    <img src="images/sneakers.jpg" alt="Adidași" />
+    <div class="product-info">
+      <h3>Adidași porumbel</h3>
+      <p>Preț: 45 RON</p>
+      <button onclick="addToCart(2)">Adaugă în coș</button>
     </div>
-    <ul id="comments-list" class="mt-2 space-y-2">
-      <li class="border-b pb-1">🔥 Super tare!</li>
-    </ul>
-    <input id="comment-input" type="text" placeholder="Scrie un comentariu..." class="mt-2 w-full border p-2 rounded"/>
   </div>
 
-  <!-- Buton adăugare -->
-  <button id="add-post" class="fixed bottom-6 left-1/2 transform -translate-x-1/2 bg-pink-500 hover:bg-pink-600 text-white text-3xl w-14 h-14 rounded-full shadow-lg z-50">+</button>
+  <div class="product" data-id="3" data-name="Mâncare porumbel" data-price="20">
+    <img src="images/food.jpg" alt="Mâncare" />
+    <div class="product-info">
+      <h3>Mâncare porumbel</h3>
+      <p>Preț: 20 RON</p>
+      <button onclick="addToCart(3)">Adaugă în coș</button>
+    </div>
+  </div>
+</div>
 
-  <script src="script.js"></script>
+<div id="cart-icon" title="Vezi coșul" onclick="goToCheckout()">🛒</div>
+
+<script>
+  function addToCart(productId) {
+    const productElem = document.querySelector(`.product[data-id='${productId}']`);
+    const name = productElem.getAttribute('data-name');
+    const price = parseFloat(productElem.getAttribute('data-price'));
+
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    const existing = cart.find(item => item.id === productId);
+    if (existing) {
+      existing.qty++;
+    } else {
+      cart.push({ id: productId, name, price, qty: 1 });
+    }
+
+    localStorage.setItem('cart', JSON.stringify(cart));
+    alert(`${name} a fost adăugat în coș!`);
+  }
+
+  function goToCheckout() {
+    window.location.href = 'checkout.html';
+  }
+</script>
+
 </body>
 </html>
+
 
