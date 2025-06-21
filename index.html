@@ -5,42 +5,63 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>TikTok Clone</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .video-wrapper {
+      aspect-ratio: 9 / 16;
+      height: 100vh;
+    }
+  </style>
 </head>
 <body class="bg-black text-white overflow-y-scroll snap-y snap-mandatory h-screen">
 
-  <!-- Container general -->
-  <div id="feed" class="flex flex-col space-y-4 p-4">
-    
+  <!-- Feedul video -->
+  <div id="feed" class="flex flex-col snap-y snap-mandatory">
+
     <!-- Post 1 -->
-    <div class="snap-start w-full h-screen relative">
-      <video src="https://www.w3schools.com/html/mov_bbb.mp4" class="w-full h-full object-cover" autoplay loop muted></video>
+    <div class="snap-start video-wrapper relative">
+      <video class="w-full h-full object-cover" src="https://www.w3schools.com/html/mov_bbb.mp4" autoplay loop muted playsinline></video>
       <div class="absolute bottom-10 left-5">
         <h2 class="text-xl font-bold">alex.tiktok</h2>
         <p>#funny #cat</p>
       </div>
       <div class="absolute bottom-10 right-5 flex flex-col items-center space-y-3">
-        <button class="like-btn text-2xl">❤️</button>
-        <span class="like-count">0</span>
+        <button class="like-btn text-3xl">❤️</button>
+        <span class="like-count text-lg">0</span>
+        <button class="comment-btn text-white text-xl">💬</button>
       </div>
     </div>
 
     <!-- Post 2 -->
-    <div class="snap-start w-full h-screen relative">
-      <video src="https://www.w3schools.com/html/movie.mp4" class="w-full h-full object-cover" autoplay loop muted></video>
+    <div class="snap-start video-wrapper relative">
+      <video class="w-full h-full object-cover" src="https://www.w3schools.com/html/movie.mp4" autoplay loop muted playsinline></video>
       <div class="absolute bottom-10 left-5">
         <h2 class="text-xl font-bold">mariaxd</h2>
-        <p>#aesthetic #vibes</p>
+        <p>#vibes</p>
       </div>
       <div class="absolute bottom-10 right-5 flex flex-col items-center space-y-3">
-        <button class="like-btn text-2xl">❤️</button>
-        <span class="like-count">0</span>
+        <button class="like-btn text-3xl">❤️</button>
+        <span class="like-count text-lg">0</span>
+        <button class="comment-btn text-white text-xl">💬</button>
       </div>
     </div>
-
-    <!-- Mai poți adăuga postări aici -->
-    
   </div>
+
+  <!-- Comentarii -->
+  <div id="comment-panel" class="hidden fixed bottom-0 left-0 w-full bg-white text-black p-4 max-h-[50vh] overflow-y-auto rounded-t-2xl shadow-xl z-50">
+    <div class="flex justify-between items-center">
+      <h3 class="text-xl font-bold">Comentarii</h3>
+      <button id="close-comments" class="text-lg font-bold text-red-500">X</button>
+    </div>
+    <ul id="comments-list" class="mt-2 space-y-2">
+      <li class="border-b pb-1">🔥 Super tare!</li>
+    </ul>
+    <input id="comment-input" type="text" placeholder="Scrie un comentariu..." class="mt-2 w-full border p-2 rounded"/>
+  </div>
+
+  <!-- Buton adăugare -->
+  <button id="add-post" class="fixed bottom-6 left-1/2 transform -translate-x-1/2 bg-pink-500 hover:bg-pink-600 text-white text-3xl w-14 h-14 rounded-full shadow-lg z-50">+</button>
 
   <script src="script.js"></script>
 </body>
 </html>
+
