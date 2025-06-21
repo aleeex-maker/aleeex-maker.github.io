@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TikTok Clone</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-black text-white overflow-y-scroll snap-y snap-mandatory h-screen">
+
+  <!-- Container general -->
+  <div id="feed" class="flex flex-col space-y-4 p-4">
+    
+    <!-- Post 1 -->
+    <div class="snap-start w-full h-screen relative">
+      <video src="https://www.w3schools.com/html/mov_bbb.mp4" class="w-full h-full object-cover" autoplay loop muted></video>
+      <div class="absolute bottom-10 left-5">
+        <h2 class="text-xl font-bold">alex.tiktok</h2>
+        <p>#funny #cat</p>
+      </div>
+      <div class="absolute bottom-10 right-5 flex flex-col items-center space-y-3">
+        <button class="like-btn text-2xl">❤️</button>
+        <span class="like-count">0</span>
+      </div>
+    </div>
+
+    <!-- Post 2 -->
+    <div class="snap-start w-full h-screen relative">
+      <video src="https://www.w3schools.com/html/movie.mp4" class="w-full h-full object-cover" autoplay loop muted></video>
+      <div class="absolute bottom-10 left-5">
+        <h2 class="text-xl font-bold">mariaxd</h2>
+        <p>#aesthetic #vibes</p>
+      </div>
+      <div class="absolute bottom-10 right-5 flex flex-col items-center space-y-3">
+        <button class="like-btn text-2xl">❤️</button>
+        <span class="like-count">0</span>
+      </div>
+    </div>
+
+    <!-- Mai poți adăuga postări aici -->
+    
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
